@@ -8,8 +8,8 @@ namespace _430_Midterm
 {
    public class Class1
     {//TODO: Rename class from 'Class1'. Maybe to 'buisnessLogic?'
-     
-      
+
+        int i;
         public List<Inventory> PopulateInvGV()
         {
             List<Inventory> answer = new List<Inventory>();
