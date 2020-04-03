@@ -6,52 +6,14 @@ using MySql.Data.MySqlClient;
 
 namespace _430_Midterm
 {
-    
-
-    public class Class1
+   public class Class1
     {//TODO: Rename class from 'Class1'. Maybe to 'buisnessLogic?'
-     //TODO: move below variables to seperate class, and simply use objects of that class in the below method(s).
-     //Do same for the variables needed for orders
-        private int id;
-        private string fruitName;
-        private string supplierName;
-        private int quantity;
-        private DateTime dateAdded;
-        private DateTime dateModified;
-        public int ID
+     
+      
+        public List<Inventory> PopulateInvGV()
         {
-            get { return id; }
-            set { id = value; }
-        }
-        public string FruitName
-        {
-            get { return fruitName; }
-            set { fruitName = value; }
-        }
-        public string SupplierName
-        {
-            get { return supplierName; }
-            set { supplierName = value; }
-        }
-        public int Quantity
-        {
-            get { return quantity; }
-            set {quantity = value; }
-        }
-        public DateTime DateAdded
-        {
-            get { return dateAdded; }
-            set { dateAdded = value; }
-        }
-        public DateTime DateModified
-        {
-            get { return dateModified; }
-            set { dateModified = value; }
-        }
-        public List<Class1> PopulateInvGV()
-        {
-            List<Class1> answer = new List<Class1>();
-            MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=put_pw_here;database=specialty_fruit");
+            List<Inventory> answer = new List<Inventory>();
+            MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=Xenos1118;database=specialty_fruit");
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM inventory", con);
             using (con)
             {
@@ -60,7 +22,7 @@ namespace _430_Midterm
 
                 while (reader.Read())
                 {
-                    Class1 newEntry = new Class1();
+                    Inventory newEntry = new Inventory();
                     newEntry.ID = (int)reader["fruit_ID"];
                     newEntry.FruitName = (string)reader["fruit_name"];
                     newEntry.SupplierName = (string)reader["supplier_name"];
@@ -72,6 +34,31 @@ namespace _430_Midterm
             }
             con.Close();
             
+            return answer;
+
+        }
+        public List<Orders> PopulateOrderGV()
+        {
+            List<Orders> answer = new List<Orders>();
+            MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=Xenos1118;database=specialty_fruit");
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM orders", con);
+            using (con)
+            {
+                con.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Orders newEntry = new Orders();
+                    newEntry.OrderID = (int)reader["order_ID"];
+                    newEntry.FruitID = (int)reader["fruit_ID_FK"];
+                    newEntry.Quantity = (int)reader["quantity"];
+                    newEntry.DatePlaced = (DateTime)reader["date_placed"];
+                    newEntry.CustomerName = (string)reader["customer_name"];
+                    answer.Add(newEntry);
+                }
+            }
+            con.Close();
+
             return answer;
 
         }

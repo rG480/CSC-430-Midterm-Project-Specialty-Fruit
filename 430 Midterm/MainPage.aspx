@@ -14,6 +14,11 @@
             </asp:GridView>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
           SelectMethod ="PopulateInvGV" TypeName=" _430_Midterm.Class1"></asp:ObjectDataSource>
+          <asp:GridView ID="OrderGV" runat="server"
+                DataSourceID="ObjectDataSource2">
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
+          SelectMethod ="PopulateOrderGV" TypeName=" _430_Midterm.Class1"></asp:ObjectDataSource>
         </div>
     </form>
 </body>
