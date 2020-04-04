@@ -14,7 +14,7 @@ namespace _430_Midterm
         {
             DataTable dt = new DataTable();
             MySqlDataAdapter da;
-            MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=Xenos1118;database=specialty_fruit");
+            MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=Put_PW_Here;database=specialty_fruit");
             MySqlCommand cmd;
             if (table == "inventory")
             {
