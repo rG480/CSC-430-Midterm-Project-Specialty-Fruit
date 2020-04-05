@@ -40,7 +40,14 @@ namespace _430_Midterm
         }
         protected void ProcessInv(object sender, EventArgs e)
         {
-            Label1.Text = FruitName.Text;
+            int quantity = Int32.Parse(Quantity.Text);
+            string a = SupplierName.Text;
+            string s = FruitName.Text;
+            if (quantity > 0)
+            {
+                c1.Insert(s,a,quantity);
+            }
+            UpdateInventoryRows();
         }
     }
 }

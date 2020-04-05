@@ -40,7 +40,7 @@
       </div>
     </div>
      </div>
-    </div>
+ 
     
         <div style="display:grid;grid-template-columns: 1fr 1fr">
         <div>

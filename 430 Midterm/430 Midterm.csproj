@@ -71,7 +71,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSC430ProjectDll.dll" />
     <Content Include="default.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
