@@ -26,16 +26,22 @@
       <div class="modal-header">
           <h4 class="modal-title">Add a product.</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        
-      </div>
+       </div>
       <div class="modal-body">
 	     </div>
 	  <h4> Please enter the details of the fruit product you wish to add.</h4></br>
 	  <div class="form-group">
-      <asp:TextBox ID="FruitName" runat="server"></asp:TextBox><br />
-       <asp:TextBox ID="SupplierName" runat="server"></asp:TextBox><br />
-       <asp:TextBox ID="Quantity" runat="server"></asp:TextBox><br />
-	   </div>
+
+    <asp:TextBox ID="FruitName" runat="server" MaxLength="50" pattern="[a-zA-Z ' .]"></asp:TextBox>
+    <asp:RegularExpressionValidator runat="server" ControlToValidate="FruitName" ErrorMessage="Fruit Name must be letters only!" ValidationExpression="[a-zA-Z ,]{1,50}" />
+
+    <asp:TextBox ID="SupplierName" runat="server"></asp:TextBox>
+    <asp:RegularExpressionValidator runat="server" ControlToValidate="SupplierName" ErrorMessage="Letters, apostrophes and periods only!" ValidationExpression="[a-zA-Z ' , .]{1,50}" />
+
+    <asp:TextBox ID="Quantity" runat="server" type="number"></asp:TextBox><br />
+    <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+
+</div>
       <asp:Button ID="BtnSave" CssClass="btn btn-success" runat="server" Text=" Save " OnClick="ProcessInv" UseSubmitBehavior="false"></asp:Button>
       </div>
     </div>

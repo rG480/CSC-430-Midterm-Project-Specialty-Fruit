@@ -15,7 +15,7 @@ namespace _430_Midterm
         {
             DataTable dt = new DataTable();
             MySqlDataAdapter da;
-          
+        
             MySqlCommand cmd;
             if (table == "inventory")
             {

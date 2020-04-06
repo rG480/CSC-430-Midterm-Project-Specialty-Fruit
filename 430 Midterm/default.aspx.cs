@@ -23,7 +23,6 @@ namespace _430_Midterm
            
             DataTable data= new DataTable();
             data = c1.PopulateTables("inventory");
-            data.Columns["fruit_ID"].ColumnName = "ID";
             InvGV.DataSource = data;
             InvGV.DataBind();
             
