@@ -46,6 +46,29 @@
       </div>
     </div>
      </div>
+  <div id="ordersModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!--Orders Modal content-->
+      <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Add a product.</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       </div>
+      <div class="modal-body">
+	     </div>
+	  <h4> Please enter the details of the fruit product you wish to add.</h4></br>
+	  <div class="form-group">
+
+    
+
+    <asp:TextBox ID="OrderFruitID" runat="server" type="number"></asp:TextBox><br />
+    <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+
+</div>
+      <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text=" Save " OnClick="ProcessOrder" UseSubmitBehavior="false"></asp:Button>
+      </div>
+    </div>
+     </div>
  
     
         <div style="display:grid;grid-template-columns: 1fr 1fr">
@@ -75,6 +98,7 @@
         
       
         <button type="button" class="btn btn-info " data-toggle="modal" data-target="#inventoryModal" >Open Modal</button>
+          <button type="button" class="btn btn-info " data-toggle="modal" data-target="#ordersModal" >Open Modal</button>
     </form>
 </body>
 </html>

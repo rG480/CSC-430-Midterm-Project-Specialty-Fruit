@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace _430_Midterm
 {
-   public class BuisnessLogic
+    public class BuisnessLogic
     {
         MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=Xenos1118;database=specialty_fruit");
         MySqlCommand cmd;
@@ -15,7 +15,7 @@ namespace _430_Midterm
         {
             DataTable dt = new DataTable();
             MySqlDataAdapter da;
-        
+
             MySqlCommand cmd;
             if (table == "inventory")
             {
@@ -46,16 +46,17 @@ namespace _430_Midterm
             }
             return null;
         }
-        public void Insert(string fruit,string supplier,int quantity) {
-            cmd = new MySqlCommand("INSERT INTO specialty_fruit.inventory(fruit_name, supplier_name, quantity, first_added, last_modified)VALUES(@param1,@param2,@param3,@param4,@param5)",con);
+        public void Insert(string fruit, string supplier, int quantity)
+        {
+            cmd = new MySqlCommand("INSERT INTO specialty_fruit.inventory(fruit_name, supplier_name, quantity, first_added, last_modified)VALUES(@param1,@param2,@param3,@param4,@param5)", con);
             using (con)
             {
                 con.Open();
                 using (cmd)
                 {
-                    
+
                     cmd.Parameters.AddWithValue("@param1", fruit);
-                    cmd.Parameters.AddWithValue("@param2",supplier);
+                    cmd.Parameters.AddWithValue("@param2", supplier);
                     cmd.Parameters.AddWithValue("@param3", quantity);
                     cmd.Parameters.AddWithValue("@param4", DateTime.Now);
                     cmd.Parameters.AddWithValue("@param5", DateTime.Now);
@@ -65,6 +66,28 @@ namespace _430_Midterm
                 con.Close();
             }
         }
-      
+        public int InsertOrder(int ID) //add params as needed here
+        {
+            int count;
+            MySqlCommand idExists = new MySqlCommand("SELECT COUNT(*) FROM INVENTORY WHERE fruit_ID=@fruitID ", con);
+            using (con)
+            {
+                con.Open();
+                using (idExists)
+                {
+
+                    idExists.Parameters.AddWithValue("@fruitID", ID);
+                    count = Convert.ToInt32(idExists.ExecuteScalar());
+                }
+                con.Close();
+            }
+            if (count == 1)
+            {
+                //execute quantity query & validate
+                //if quantity checks out, insert  new order
+            }
+
+            return count;
+        }
     }
 }

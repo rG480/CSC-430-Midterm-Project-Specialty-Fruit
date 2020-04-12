@@ -48,5 +48,10 @@ namespace _430_Midterm
             }
             UpdateInventoryRows();
         }
+        protected void ProcessOrder(object sender, EventArgs e)
+        {
+           
+            Label1.Text=c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
+        }
     }
 }
