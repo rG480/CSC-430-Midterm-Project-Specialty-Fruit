@@ -24,8 +24,6 @@ namespace _430_Midterm
             DataTable data = new DataTable();
             data = c1.PopulateTables("inventory");
             InvGV.DataSource = data;
-           
-          
             InvGV.DataBind();
 
         }
@@ -52,16 +50,24 @@ namespace _430_Midterm
         protected void ProcessOrder(object sender, EventArgs e)
         {
 
-            TextBox1.Text = c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
+          //  TextBox1.Text = c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
+        }
+        protected void ModifyInventory(object sender,EventArgs e)
+        {
+            int ID=Int32.Parse(modInvIDLabel.Text);
+            int quantity = Int32.Parse(modInvQuant.Text);
+            c1.UpdateInventory(ID, quantity);
+            UpdateInventoryRows();
         }
         protected void InvGV_RowCommand(object sender, GridViewCommandEventArgs e)
         {
            
             int index = Int32.Parse((string)e.CommandArgument);
-           int fruitID = Int32.Parse(InvGV.DataKeys[index].Values["fruit_id"].ToString());
+            string fruitID = InvGV.DataKeys[index].Values["fruit_id"].ToString();
             string Code = InvGV.DataKeys[index].Values["quantity"].ToString();
-            TextBox1.Text = Code;
-            //string Name = (string)GridView1.DataKeys[index].Values["AccountName"];
+            modInvIDLabel.Text = fruitID;
+            modInvQuant.Text = Code;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
         }
 
     }

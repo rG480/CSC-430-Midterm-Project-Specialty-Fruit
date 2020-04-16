@@ -12,14 +12,15 @@
     <script type="text/javascript">
    
 </script>
-    <script>
-        function func1() {
-            $("#inventoryModal").modal('show');
-        }  
-    </script>
+<script type="text/javascript">
+    function openModal() {
+        $('#modifyInvModal').modal('show');
+    }
+</script>
 </head>
 <body>
-     <form id="form1" runat="server"><div id="inventoryModal" class="modal fade" role="dialog">
+  <form id="form1" runat="server">
+   <div id="inventoryModal" class="modal fade" role="dialog">
      <div class="modal-dialog">
       <!--Inventory Modal content-->
       <div class="modal-content">
@@ -58,22 +59,37 @@
 	     </div>
 	  <h4> Please enter the details of the fruit product you wish to add.</h4></br>
 	  <div class="form-group">
-
-    
-
     <asp:TextBox ID="OrderFruitID" runat="server" type="number"></asp:TextBox><br />
     <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
-
-</div>
-      <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text=" Save " OnClick="ProcessOrder" UseSubmitBehavior="false"></asp:Button>
+    </div>
+       <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text=" Save " OnClick="ProcessOrder" UseSubmitBehavior="false"></asp:Button>
+    </div>
+  </div>
+ </div>
+ <div id="modifyInvModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!--Inventory Modification Modal content-->
+      <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Edit a product currently in inventory.</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       </div>
+      <div class="modal-body">
+	     </div>
+	  <h4> Modifying the values of product:</h4> <asp:Label ID="modInvIDLabel" style="font-size:24px;font-weight:bold" runat="server" Text="N/A"></asp:Label></br>
+         
+	  <div class="form-group">
+       <asp:TextBox ID="modInvQuant" runat="server" Type="number" Text="0"></asp:TextBox >
+       <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+      </div>
+      <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" Text=" Save " OnClick="ModifyInventory" UseSubmitBehavior="false"></asp:Button>
       </div>
     </div>
-     </div>
- 
+  </div>
     
         <div style="display:grid;grid-template-columns: 1fr 1fr">
         <div>
-            <h1>Inventory</h1>
+            <h1>Product Inventory</h1>
            <asp:GridView ID="InvGV"  OnRowCommand="InvGV_RowCommand" runat="server"
                DataKeyNames="fruit_id,fruit_name,quantity"  AutoGenerateColumns="False" >
                 <Columns>
@@ -83,32 +99,28 @@
                          <asp:BoundField  DataField="quantity" HeaderText="Quantity" />
                          <asp:BoundField  DataField="first_added" HeaderText="Date Added" />
                          <asp:BoundField  DataField="last_modified" HeaderText="Date Last Modified" />
-	                     <asp:buttonfield  buttontype="button" Text="Details" commandname="Details"  />
-                                
-       
-                            
+	                     <asp:buttonfield  buttontype="button" Text="Modify Quantity" commandname="Details"  />
                 </Columns>
             </asp:GridView>
             </div>
         <div>
             <h1>Orders</h1>
           <asp:GridView ID="OrdersGV" runat="server"
-               AutoGenerateColumns="True">
+               AutoGenerateColumns="False">
                 <Columns>
-                    
+                     <asp:BoundField  DataField="order_id" HeaderText="Order ID" />
+                         <asp:BoundField  DataField="fruit_ID_FK" HeaderText="Fruit ID" />
+	                     <asp:BoundField  DataField="quantity" HeaderText="Quantity" />
+                         <asp:BoundField  DataField="date_placed" HeaderText="Date Placed" />
+                         <asp:BoundField  DataField="customer_name" HeaderText="Customer" />
+	                    
                 </Columns>
             </asp:GridView>
-           <!--This label was just used for testing purposes, testing if the text data was sent-->
-            <asp:TextBox ID="TextBox1" runat="server" Type="number" Text="0"></asp:TextBox >
-             <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
-           <asp:TextBox ID="TextBox2" runat="server" Text="Label"></asp:TextBox>
+           
         </div>
         </div>
-      
-        
-      
-        <button type="button" class="btn btn-info " data-toggle="modal" data-target="#inventoryModal" >Open Modal</button>
-          <button type="button" class="btn btn-info " data-toggle="modal" data-target="#ordersModal" >Open Modal</button>
+      <button type="button" class="btn btn-info " data-toggle="modal" data-target="#inventoryModal" >Add a product</button>
+          <button type="button" class="btn btn-info " data-toggle="modal" data-target="#ordersModal" >Add an order</button>
     </form>
 </body>
 </html>

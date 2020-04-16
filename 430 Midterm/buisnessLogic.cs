@@ -89,5 +89,42 @@ namespace _430_Midterm
 
             return count;
         }
+        public int UpdateInventory(int prodID,int prodQuant)
+        {
+            int count;
+            DateTime currentTime = DateTime.Now;
+            MySqlCommand idExists = new MySqlCommand("SELECT COUNT(*) FROM INVENTORY WHERE fruit_ID=@fruitID ", con);
+            using (con)
+            {
+                con.Open();
+                using (idExists)
+                {
+
+                    idExists.Parameters.AddWithValue("@fruitID", prodID);
+                    count = Convert.ToInt32(idExists.ExecuteScalar());
+                }
+                con.Close();
+            }
+            if (count == 1 && prodQuant >-1)
+            {
+                MySqlCommand updater = new MySqlCommand("UPDATE inventory SET quantity= @param1,last_modified= @param2 WHERE fruit_id = @param3", con);
+                using (con)
+                {
+                    con.Open();
+                    using (updater)
+                    {
+
+                        updater.Parameters.AddWithValue("@param1", prodQuant);
+                        updater.Parameters.AddWithValue("@param2", currentTime);
+                        updater.Parameters.AddWithValue("@param3", prodID);
+                        count = Convert.ToInt32(updater.ExecuteNonQuery());
+                    }
+                    con.Close();
+                }
+
+            }
+
+            return count;
+        }
     }
 }
