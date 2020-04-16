@@ -74,10 +74,19 @@
         <div style="display:grid;grid-template-columns: 1fr 1fr">
         <div>
             <h1>Inventory</h1>
-           <asp:GridView ID="InvGV" runat="server"
-                 AutoGenerateColumns="True">
+           <asp:GridView ID="InvGV"  OnRowCommand="InvGV_RowCommand" runat="server"
+               DataKeyNames="fruit_id,fruit_name,quantity"  AutoGenerateColumns="False" >
                 <Columns>
-                    
+                         <asp:BoundField  DataField="fruit_id" HeaderText="Fruit ID" />
+                         <asp:BoundField  DataField="fruit_name" HeaderText="Fruit Name" />
+	                     <asp:BoundField  DataField="supplier_name" HeaderText="Supplier Name" />
+                         <asp:BoundField  DataField="quantity" HeaderText="Quantity" />
+                         <asp:BoundField  DataField="first_added" HeaderText="Date Added" />
+                         <asp:BoundField  DataField="last_modified" HeaderText="Date Last Modified" />
+	                     <asp:buttonfield  buttontype="button" Text="Details" commandname="Details"  />
+                                
+       
+                            
                 </Columns>
             </asp:GridView>
             </div>
@@ -90,8 +99,9 @@
                 </Columns>
             </asp:GridView>
            <!--This label was just used for testing purposes, testing if the text data was sent-->
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-           
+            <asp:TextBox ID="TextBox1" runat="server" Type="number" Text="0"></asp:TextBox >
+             <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+           <asp:TextBox ID="TextBox2" runat="server" Text="Label"></asp:TextBox>
         </div>
         </div>
       

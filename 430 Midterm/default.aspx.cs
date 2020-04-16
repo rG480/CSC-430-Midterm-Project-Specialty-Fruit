@@ -19,13 +19,14 @@ namespace _430_Midterm
         }
         protected void UpdateInventoryRows()
         {
-
            
-            DataTable data= new DataTable();
+
+            DataTable data = new DataTable();
             data = c1.PopulateTables("inventory");
             InvGV.DataSource = data;
+           
+          
             InvGV.DataBind();
-            
 
         }
         protected void UpdateOrdersRows()
@@ -33,7 +34,7 @@ namespace _430_Midterm
 
             DataTable data = new DataTable();
             data = c1.PopulateTables("orders");
-           
+
             OrdersGV.DataSource = data;
             OrdersGV.DataBind();
         }
@@ -44,14 +45,24 @@ namespace _430_Midterm
             string s = FruitName.Text;
             if (quantity > 0)
             {
-                c1.Insert(s,a,quantity);
+                c1.Insert(s, a, quantity);
             }
             UpdateInventoryRows();
         }
         protected void ProcessOrder(object sender, EventArgs e)
         {
-           
-            Label1.Text=c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
+
+            TextBox1.Text = c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
         }
+        protected void InvGV_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+           
+            int index = Int32.Parse((string)e.CommandArgument);
+           int fruitID = Int32.Parse(InvGV.DataKeys[index].Values["fruit_id"].ToString());
+            string Code = InvGV.DataKeys[index].Values["quantity"].ToString();
+            TextBox1.Text = Code;
+            //string Name = (string)GridView1.DataKeys[index].Values["AccountName"];
+        }
+
     }
 }
