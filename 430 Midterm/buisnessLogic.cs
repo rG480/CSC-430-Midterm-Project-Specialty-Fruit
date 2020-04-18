@@ -89,7 +89,7 @@ namespace _430_Midterm
 
             return count;
         }
-        public int UpdateInventory(int prodID,int prodQuant)
+        public string UpdateInventory(int prodID,int prodQuant)
         {
             int count;
             DateTime currentTime = DateTime.Now;
@@ -121,10 +121,13 @@ namespace _430_Midterm
                     }
                     con.Close();
                 }
-
+                return "Update successful!";
             }
-
-            return count;
+            else if (prodQuant < -1)
+            {
+                return "Invalid quantity entered, the quantity of items can never be negative.";
+            }
+            return "The entered ID was not found in our inventory.";
         }
     }
 }

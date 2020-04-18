@@ -54,9 +54,12 @@ namespace _430_Midterm
         }
         protected void ModifyInventory(object sender,EventArgs e)
         {
+            string message="";
             int ID=Int32.Parse(modInvIDLabel.Text);
             int quantity = Int32.Parse(modInvQuant.Text);
-            c1.UpdateInventory(ID, quantity);
+            string resultMessage= c1.UpdateInventory(ID, quantity);
+           
+            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('"+resultMessage+"');", true);
             UpdateInventoryRows();
         }
         protected void InvGV_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -67,7 +70,7 @@ namespace _430_Midterm
             string Code = InvGV.DataKeys[index].Values["quantity"].ToString();
             modInvIDLabel.Text = fruitID;
             modInvQuant.Text = Code;
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModal();", true);
         }
 
     }

@@ -80,7 +80,7 @@
          
 	  <div class="form-group">
        <asp:TextBox ID="modInvQuant" runat="server" Type="number" Text="0"></asp:TextBox >
-       <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+       <asp:RegularExpressionValidator runat="server" ControlToValidate="modInvQuant" ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
       </div>
       <asp:Button ID="Button1" CssClass="btn btn-success" runat="server" Text=" Save " OnClick="ModifyInventory" UseSubmitBehavior="false"></asp:Button>
       </div>
