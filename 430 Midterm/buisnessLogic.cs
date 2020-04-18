@@ -9,8 +9,9 @@ namespace _430_Midterm
 {
     public class BuisnessLogic
     {
-        MySqlConnection con = new MySqlConnection("server=localhost;User Id=USERNAME_HERE;password=PASSWORD_HERE;database=specialty_fruit");
+        MySqlConnection con = new MySqlConnection("server=localhost;User Id=root;password=password;database=specialty_fruit");
         MySqlCommand cmd;
+
         public DataTable PopulateTables(string table)
         {
             DataTable dt = new DataTable();
@@ -46,6 +47,7 @@ namespace _430_Midterm
             }
             return null;
         }
+
         public void Insert(string fruit, string supplier, int quantity)
         {
             cmd = new MySqlCommand("INSERT INTO specialty_fruit.inventory(fruit_name, supplier_name, quantity, first_added, last_modified)VALUES(@param1,@param2,@param3,@param4,@param5)", con);
@@ -66,7 +68,8 @@ namespace _430_Midterm
                 con.Close();
             }
         }
-        public int InsertOrder(int ID) //add params as needed here
+
+        public int InsertOrder(int ID, int quantity) //add params as needed here
         {
             int count;
             MySqlCommand idExists = new MySqlCommand("SELECT COUNT(*) FROM INVENTORY WHERE fruit_ID=@fruitID ", con);
@@ -75,20 +78,70 @@ namespace _430_Midterm
                 con.Open();
                 using (idExists)
                 {
-
                     idExists.Parameters.AddWithValue("@fruitID", ID);
                     count = Convert.ToInt32(idExists.ExecuteScalar());
                 }
                 con.Close();
             }
+
+            //If order number exists in inventory
             if (count == 1)
             {
-                //execute quantity query & validate
-                //if quantity checks out, insert  new order
+                //Grabbing quantity of inventory by ID
+                int InvQuantity;
+                MySqlCommand getQuantity = new MySqlCommand("SELECT quantity FROM specialty_fruit.inventory WHERE fruit_ID=@fruitID ", con);
+                using (con)
+                {
+                    con.Open();
+                    using (getQuantity)
+                    {
+                        getQuantity.Parameters.AddWithValue("@fruitID", ID);
+                        InvQuantity = Convert.ToInt32(getQuantity.ExecuteScalar());
+                    }
+                    con.Close();
+                }
+                
+                //If Order leaves at least 0 products
+                if((InvQuantity - quantity) >= 0)
+                {
+                    //Getting Supplier name
+                    String supplierName;
+                    MySqlCommand getSupplier = new MySqlCommand("SELECT supplier_name FROM specialty_fruit.inventory WHERE fruit_ID=@fruitID", con);
+                    using (con)
+                    {
+                        con.Open();
+                        using (getSupplier)
+                        {
+                            getSupplier.Parameters.AddWithValue("@fruitID", ID);
+                            supplierName = Convert.ToString(getSupplier.ExecuteScalar());
+                        }
+                    }
+
+                    //Adding to inventory
+                    cmd = new MySqlCommand("INSERT INTO specialty_fruit.orders(fruit_ID_FK, quantity, date_placed, customer_name)VALUES(@param1, @param2, @param3, @param4)", con);
+                    using (con)
+                    {
+                        con.Open();
+                        using (cmd)
+                        {
+                            cmd.Parameters.AddWithValue("@param1", ID);
+                            cmd.Parameters.AddWithValue("@param2", quantity);
+                            cmd.Parameters.AddWithValue("@param3", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@param4", supplierName);
+                            cmd.CommandType = CommandType.Text;
+                            cmd.ExecuteNonQuery();
+                        }
+                        con.Close();
+                    }
+                    //Here we update inventory using previous inventory - requested order inventory
+                    UpdateInventory(ID, InvQuantity - quantity);
+                }
             }
 
             return count;
         }
+
+
         public int UpdateInventory(int prodID,int prodQuant)
         {
             int count;

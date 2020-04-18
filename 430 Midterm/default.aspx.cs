@@ -49,8 +49,14 @@ namespace _430_Midterm
         }
         protected void ProcessOrder(object sender, EventArgs e)
         {
+            int id = Int32.Parse(OrderFruitID.Text);
+            int quantity = Int32.Parse(OrderFruitQuantity.Text);
 
-          //  TextBox1.Text = c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
+            if (id > 0 & quantity > 0)
+                c1.InsertOrder(id, quantity);
+
+            UpdateOrdersRows();
+            UpdateInventoryRows();
         }
         protected void ModifyInventory(object sender,EventArgs e)
         {

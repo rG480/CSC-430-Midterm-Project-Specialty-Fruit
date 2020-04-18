@@ -80,7 +80,7 @@
                     <div class="modal-body">
                     </div>
                     <h4> Please enter the details of the fruit product you wish to add.</h4>
-                    <br>
+                    <br/>
                     <div class="form-group">
                         <div>
                             <asp:TextBox ID="FruitName" runat="server" MaxLength="50" pattern="[a-zA-Z ' .]"
@@ -122,12 +122,20 @@
                     </div>
                     <div class="modal-body">
                     </div>
-                    <h4> Please enter the ID of a fruit.</h4></br>
+                    <h4> Please enter the ID and Quantity of a fruit.</h4>
                     <div class="form-group">
-                        <asp:TextBox ID="OrderFruitID" runat="server" type="number" placeholder="FruitID"></asp:TextBox>
-                        <br />
-                        <asp:RegularExpressionValidator runat="server" ControlToValidate="Quantity"
-                            ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+                        <div>
+                            <asp:TextBox ID="OrderFruitID" runat="server" type="number" placeholder="FruitID"></asp:TextBox>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="OrderFruitID"
+                                ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+                        </div>
+                        <div>
+                            <asp:TextBox ID="OrderFruitQuantity" runat="server" type="number" placeholder="Quantity"></asp:TextBox>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="OrderFruitQuantity"
+                                ErrorMessage="Numbers greater than 1 only!" ValidationExpression="^[1-9]\d*$" />
+                        </div>
+
+
                     </div>
 
                     <div class="submit-button">
@@ -150,7 +158,7 @@
                     </div>
                     <h4> Modifying the values of fruit ID:</h4>
                     <asp:Label ID="modInvIDLabel" style="font-size:24px;font-weight:bold" runat="server" Text="N/A">
-                    </asp:Label></br>
+                    </asp:Label>
 
                     <div class="form-group">
                         <asp:TextBox ID="modInvQuant" runat="server" Type="number" Text="0"></asp:TextBox>
@@ -209,7 +217,7 @@
             </div>
         </div>
 
-        <hr class="seperator">
+        <hr class="seperator"/>
 
         <div class="footer">
             <h2>About Specialty Fruit Co.</h2>
