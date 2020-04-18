@@ -67,6 +67,24 @@ namespace _430_Midterm {
         protected global::System.Web.UI.WebControls.TextBox OrderFruitID;
         
         /// <summary>
+        /// OrderFruitQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox OrderFruitQuantity;
+        
+        /// <summary>
+        /// CustomerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CustomerName;
+        
+        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>

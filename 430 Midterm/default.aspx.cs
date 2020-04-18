@@ -10,7 +10,7 @@ namespace _430_Midterm
 {
     public partial class MainPage : System.Web.UI.Page
     {
-        BuisnessLogic c1 = new BuisnessLogic();
+        CSC430MidtermBuisnessObject.BuisnessObject c1 = new CSC430MidtermBuisnessObject.BuisnessObject("root","Xenos1118");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,14 +43,21 @@ namespace _430_Midterm
             string s = FruitName.Text;
             if (quantity > 0)
             {
-                c1.Insert(s, a, quantity);
+                c1.InsertInventory(s, a, quantity);
             }
             UpdateInventoryRows();
         }
         protected void ProcessOrder(object sender, EventArgs e)
         {
+            string message = "";
+            int ID = Int32.Parse(OrderFruitID.Text);
+            int quantity = Int32.Parse(OrderFruitQuantity.Text);
+            string customer=CustomerName.Text;
+            message=c1.InsertOrder(ID, quantity, customer);
 
-          //  TextBox1.Text = c1.InsertOrder(Int32.Parse(OrderFruitID.Text)).ToString();
+            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('" + message+ "');", true);
+            UpdateOrdersRows();
+
         }
         protected void ModifyInventory(object sender,EventArgs e)
         {
