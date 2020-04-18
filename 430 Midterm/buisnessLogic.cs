@@ -9,7 +9,7 @@ namespace _430_Midterm
 {
     public class BuisnessLogic
     {
-        MySqlConnection con = new MySqlConnection("server=localhost;User Id=ID_HERE;password=PASSWORD_HERE;database=specialty_fruit");
+        MySqlConnection con = new MySqlConnection("server=localhost;User Id=USERNAME_HERE;password=PASSWORD_HERE;database=specialty_fruit");
         MySqlCommand cmd;
         public DataTable PopulateTables(string table)
         {

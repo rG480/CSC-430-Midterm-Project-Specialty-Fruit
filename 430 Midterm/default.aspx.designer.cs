@@ -31,15 +31,6 @@ namespace _430_Midterm {
         protected global::System.Web.UI.WebControls.TextBox FruitName;
         
         /// <summary>
-        /// reqFruitName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFruitName;
-        
-        /// <summary>
         /// SupplierName control.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace _430_Midterm {
         protected global::System.Web.UI.WebControls.TextBox SupplierName;
         
         /// <summary>
-        /// reqSupplierName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqSupplierName;
-        
-        /// <summary>
         /// Quantity control.
         /// </summary>
         /// <remarks>
@@ -65,15 +47,6 @@ namespace _430_Midterm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Quantity;
-        
-        /// <summary>
-        /// reqQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqQuantity;
         
         /// <summary>
         /// BtnSave control.
@@ -92,15 +65,6 @@ namespace _430_Midterm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox OrderFruitID;
-        
-        /// <summary>
-        /// reqOrderFruitID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOrderFruitID;
         
         /// <summary>
         /// Button2 control.
@@ -128,15 +92,6 @@ namespace _430_Midterm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox modInvQuant;
-        
-        /// <summary>
-        /// reqModInvQuant control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqModInvQuant;
         
         /// <summary>
         /// Button1 control.
