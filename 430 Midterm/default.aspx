@@ -121,7 +121,7 @@
                     </div>
                     <div class="modal-body">
                     </div>
-                    <h4> Please enter the ID of a fruit.</h4></br>
+                   <h4> Please enter the  fruit ID, quantity ordered, and customer ordering.</h4>
                     <div class="form-group">
                         <div>
                         <asp:TextBox ID="OrderFruitID" runat="server" type="number" placeholder="FruitID"></asp:TextBox>
@@ -220,7 +220,7 @@
             </div>
         </div>
 
-        <hr class="seperator">
+        <hr class="seperator"/>
 
         <div class="footer">
             <h2>About Specialty Fruit Co.</h2>
@@ -239,7 +239,7 @@
                 sustainably growing the finest fruit available.
             </p>
             <br />
-            <p>Project by: <strong>Roberto Garcia, Muhammad Khalil, and Yasantha ...</strong></p>
+            <p>Project by: <strong>Roberto Garcia, Muhammad Khalil, and Yasantha Marasinghe.</strong></p>
         </div>
 
     </form>

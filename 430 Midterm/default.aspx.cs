@@ -10,7 +10,7 @@ namespace _430_Midterm
 {
     public partial class MainPage : System.Web.UI.Page
     {
-        CSC430MidtermBuisnessObject.BuisnessObject c1 = new CSC430MidtermBuisnessObject.BuisnessObject("root","Xenos1118");
+        CSC430MidtermBuisnessObject.BuisnessObject c1 = new CSC430MidtermBuisnessObject.BuisnessObject("root","PASSWORD_HERE");
 
         protected void Page_Load(object sender, EventArgs e)
         {
