@@ -11,7 +11,7 @@ namespace _430_Midterm
     public partial class MainPage : System.Web.UI.Page
     {
         CSC430MidtermBuisnessObject.BuisnessObject c1 = new CSC430MidtermBuisnessObject.BuisnessObject("root","Xenos1118");
-
+        string message = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             UpdateInventoryRows();
@@ -43,13 +43,14 @@ namespace _430_Midterm
             string s = FruitName.Text;
             if (quantity > 0)
             {
-                c1.InsertInventory(s, a, quantity);
+               message= c1.InsertInventory(s, a, quantity);
+               ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('" + message + "');", true);
             }
             UpdateInventoryRows();
         }
         protected void ProcessOrder(object sender, EventArgs e)
         {
-            string message = "";
+            
             int ID = Int32.Parse(OrderFruitID.Text);
             int quantity = Int32.Parse(OrderFruitQuantity.Text);
             string customer=CustomerName.Text;
@@ -62,7 +63,7 @@ namespace _430_Midterm
         }
         protected void ModifyInventory(object sender,EventArgs e)
         {
-            string message="";
+            
             int ID=Int32.Parse(modInvIDLabel.Text);
             int quantity = Int32.Parse(modInvQuant.Text);
             string resultMessage= c1.UpdateInventory(ID, quantity);
