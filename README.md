@@ -5,13 +5,13 @@ Specialty Fruit Co. is a project by Roberto Garcia, Muhammad Khalil, Yasantha Ma
 
 ## Components
 **Adding fruit to inventory:**
-![](https://khalil.cx/SpecialtyFruit/AddingInventory.gif | width=1440)
+![Adding Inventory Example](https://khalil.cx/SpecialtyFruit/AddingInventory.gif | width=1440)
 
 **Modifying fruit quanitity in Inventory:**
-![](https://khalil.cx/SpecialtyFruit/ModifyingInventory.gif | width=1440)
+![Modifying Inventory Example](https://khalil.cx/SpecialtyFruit/ModifyingInventory.gif | width=1440)
 
 **Placing an order:**
-![](https://khalil.cx/SpecialtyFruit/AddingOrder.gif | width=1440)
+![Adding Order Example](https://khalil.cx/SpecialtyFruit/AddingOrder.gif | width=1440)
 
 ## DLL Components
 **_BusinessObject(string, string)_**
