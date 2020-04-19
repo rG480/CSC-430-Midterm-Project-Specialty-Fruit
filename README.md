@@ -13,7 +13,7 @@ Specialty Fruit Co. is a project by Roberto Garcia, Muhammad Khalil, Yasantha Ma
 **Placing an order:**
 ![](https://khalil.cx/SpecialtyFruit/AddingOrder.gif)
 
-## DLL Components
+## DLL Component Methods
 **_BusinessObject(string, string)_**
 A constructor used to create the MySQL connection string this object relies on for it's operations. The first parameter is the username, and the second is the password.
 
