@@ -10,7 +10,7 @@ namespace _430_Midterm
 {
     public partial class MainPage : System.Web.UI.Page
     {
-        CSC430MidtermBuisnessObject.BuisnessObject c1 = new CSC430MidtermBuisnessObject.BuisnessObject("root","PASSWORD_HERE");
+        CSC430MidtermBuisnessObject.BuisnessObject c1 = new CSC430MidtermBuisnessObject.BuisnessObject("root","Xenos1118");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,6 +57,7 @@ namespace _430_Midterm
 
             ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('" + message+ "');", true);
             UpdateOrdersRows();
+            UpdateInventoryRows();
 
         }
         protected void ModifyInventory(object sender,EventArgs e)
